@@ -1,4 +1,4 @@
-<nav class="w-screen min-h-16">
+<nav class="w-full min-h-16">
     {{-- Header --}}
     <div class="w-full min-h-16 flex justify-center items-center px-4 bg-amber-600">
         <div class="w-full flex justify-between items-center">
@@ -14,7 +14,7 @@
     </div>
 
     {{-- Navigation --}}
-    <div class="min-h-16 w-full flex justify-center items-center gap-4 shadow-sm">
+    <div class="min-h-16 w-full bg-taupe-50 flex justify-center items-center gap-4 shadow-sm">
         <a href="/">Home</a>
         <a href="/products">Products</a>
         <a href="/recipes">Recipes</a>

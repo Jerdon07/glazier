@@ -21,7 +21,7 @@
             </style>
         @endif
     </head>
-    <body class="bg-taupe-50 text-taupe-800">
+    <body class="bg-taupe-200 text-taupe-800">
         <x-nav></x-nav>
 
         <main>
