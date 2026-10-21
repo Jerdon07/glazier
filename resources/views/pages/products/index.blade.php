@@ -1,9 +1,17 @@
 <x-layout>
-    <div class="m-4">
-        <div class="w-full flex justify-end">
-            <a href="/products/create">Add Product</a>
+    <div class="m-4 space-y-6">
+        <div class="w-full flex justify-between items-end">
+            {{-- Heading --}}
+            <x-heading
+                title="My Products"
+                description="The List of all your created products"
+            />
+
+            {{-- Create Button --}}
+            <a href="/products/create" class="bg-amber-600 text-taupe-50 rounded-2xl py-1 px-3 hover:bg-amber-700">Add Product</a>
         </div>
 
+        {{-- Products --}}
         @if ($products)
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
                 @foreach ($products as $product)
@@ -15,7 +23,6 @@
                                 {{ $product->name }}
                             </p>
 
-                            
                             @if ($product->is_available)
                                 <div class="rounded-2xl font-semibold bg-green-500 text-taupe-50" shadow>
                                     <p class="py-1 px-3 text-xs">Available</p>
