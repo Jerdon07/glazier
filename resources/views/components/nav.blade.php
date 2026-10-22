@@ -1,7 +1,7 @@
 <nav class="w-full min-h-16">
     {{-- Header --}}
     <div class="w-full min-h-16 flex justify-center items-center px-4 bg-amber-600">
-        <div class="w-full flex justify-between items-center">
+        <div class="w-full max-w-6xl mx-auto flex justify-between items-center">
             <div>
                 <h1 class="text-taupe-50 font-bold">Glazier</h1>
                 <p class="text-xs text-taupe-50">Glazed with perfection</p>
