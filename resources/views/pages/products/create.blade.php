@@ -18,8 +18,14 @@
                     type="text" 
                     name="name" 
                     id="name"
+                    value="{{ old('name') }}"
                     class="w-full border rounded-2xl py-1 px-2 text-sm"
                 >
+                <div class="h-1 mt-1">
+                    @error('name')
+                        <p class="text-xs text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
 
             <div>
@@ -28,8 +34,14 @@
                     type="number" 
                     name="price" 
                     id="price"
+                    value="{{ old('price') }}"
                     class="w-full border rounded-2xl py-1 px-2 text-sm"
                 >
+                <div class="h-1 mt-1">
+                    @error('price')
+                        <p class="text-xs text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
 
             <div class="flex space-x-2">
@@ -44,7 +56,17 @@
 
             <div>
                 <label for="description" class="text-sm">Description</label>
-                <textarea name="description" id="description" class="w-full border rounded-2xl py-1 px-2 text-sm"></textarea>
+                <textarea 
+                    name="description" 
+                    id="description" 
+                    value="{{ old('description') }}"
+                    class="w-full border rounded-2xl py-1 px-2 text-sm"
+                ></textarea>
+                <div class="h-1 mt-1">
+                    @error('description')
+                        <p class="text-xs text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
             </div>
 
             <button type="submit" class="rounded-2xl p-2 bg-amber-500 hover:bg-amber-600 shadow cursor-pointer text-taupe-50 font-semibold">
