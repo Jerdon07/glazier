@@ -9,6 +9,8 @@
         method="post"
         class="bg-taupe-50 w-100 p-8 my-4 mx-auto shadow rounded-2xl"
     >
+        @csrf
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 <label for="name" class="text-sm">Product Name<span class="text-red-500"> *</span></label>
@@ -23,7 +25,7 @@
             <div>
                 <label for="price" class="text-sm">Price<span class="text-red-500"> *</span></label>
                 <input 
-                    type="text" 
+                    type="number" 
                     name="price" 
                     id="price"
                     class="w-full border rounded-2xl py-1 px-2 text-sm"
