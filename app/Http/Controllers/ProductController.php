@@ -15,9 +15,9 @@ class ProductController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(): View
     {
-        //
+        return view('pages.products.create');
     }
 
     public function store(Request $request)
