@@ -24,7 +24,7 @@
     <body class="bg-taupe-200 text-taupe-800">
         <x-nav></x-nav>
 
-        <main class="max-w-5xl mx-auto">
+        <main class="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
             {{ $slot }}
         </main>
     </body>
