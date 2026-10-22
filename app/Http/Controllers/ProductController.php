@@ -22,7 +22,20 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $request->merge([
+            'is_available' => $request->boolean('is_available'),
+        ]);
+
+        $validated = $request->validate([
+            'name' => ['required', 'min:3', 'max:255'],
+            'price' => ['required', 'numeric', 'min:10', 'max:100'],
+            'is_available' => ['required', 'boolean'],
+            'description' => ['nullable', 'max:600'],
+        ]);
+
+        Product::create($validated);
+
+        return redirect('/products');
     }
 
     public function show(Product $product)
