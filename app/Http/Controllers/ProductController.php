@@ -40,7 +40,9 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        //
+        return view('pages.products.show', [
+            'product' => $product,
+        ]);
     }
 
     public function edit(Product $product)
