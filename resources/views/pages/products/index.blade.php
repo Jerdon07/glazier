@@ -12,13 +12,13 @@
         </div>
 
         {{-- Products --}}
-        @if ($products)
+        @if (isset($products))
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
                 @foreach ($products as $product)
                     {{-- Card --}}
-                    <div class="py-4 bg-taupe-50 rounded-2xl shadow space-y-4">
+                    <x-card>
                         {{-- Header --}}
-                        <div class="px-4 flex justify-between items-end">
+                        <x-card.card-header>
                             <p class="font-bold">
                                 {{ $product->name }}
                             </p>
@@ -32,10 +32,10 @@
                                     <p class="p-1 px-3 text-xs">Closed</p>
                                 </div>
                             @endif
-                        </div>
+                        </x-card.card-header>
 
                         {{-- Description --}}
-                        <div class="px-4 space-y-2 min-h-20 flex flex-col justify-between">
+                        <x-card.card-content>
                             <p class="text-sm line-clamp-2">
                                 {{ $product->description }}
                             </p>
@@ -45,8 +45,8 @@
                                     <p>₱{{ $product->price }}</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </x-card.card-content>
+                    </x-card>
                 @endforeach
             </div>
         @else
