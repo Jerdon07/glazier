@@ -16,7 +16,12 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
                 @foreach ($products as $product)
                     {{-- Card --}}
-                    <x-card.product-card :product="$product" />
+                    <x-card.product-card 
+                        :product="$product"
+                        show_button 
+                        edit_button 
+                        delete_button
+                    />
                 @endforeach
             </div>
         @else

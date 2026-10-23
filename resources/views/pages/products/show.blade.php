@@ -12,11 +12,12 @@
             <x-heading
                 title="{{ $product->name }}"
             />
-
-            {{-- Create Button --}}
-            <a href="/products/create" class="bg-amber-600 text-taupe-50 rounded-2xl py-1 px-3 hover:bg-amber-700">Edit Product</a>
         </div>
 
-        <x-card.product-card :product=$product />
+        <x-card.product-card 
+            :product=$product 
+            edit_button
+            delete_button
+        />
     </div>
 </x-layout>
