@@ -47,7 +47,9 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        //
+        return view('pages.products.edit', [
+            'product' => $product,
+        ]);
     }
 
     public function update(Request $request, Product $product)
