@@ -66,9 +66,13 @@
                     </div>
                 </div>
 
-                <button type="submit" class="rounded-2xl p-2 bg-amber-500 hover:bg-amber-600 shadow cursor-pointer text-taupe-50 font-semibold">
-                    Update Product
-                </button>
+                <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="/products" class="rounded-2xl bg-taupe-200 hover:bg-taupe-300 font-semibold p-2 flex justify-center">Cancel</a>
+
+                    <button type="submit" class="rounded-2xl p-2 bg-amber-500 hover:bg-amber-600 shadow cursor-pointer text-taupe-50 font-semibold">
+                        Update Product
+                    </button>
+                </div>
             </x-card.card-content>
         </form>
     </x-card>
