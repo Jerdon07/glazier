@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -20,22 +20,11 @@ class ProductController extends Controller
         return view('pages.products.create');
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $request->merge([
-            'is_available' => $request->boolean('is_available'),
-        ]);
+        Product::create($request->validated());
 
-        $validated = $request->validate([
-            'name' => ['required', 'min:3', 'max:255'],
-            'price' => ['required', 'numeric', 'min:10', 'max:100'],
-            'is_available' => ['required', 'boolean'],
-            'description' => ['nullable', 'max:600'],
-        ]);
-
-        Product::create($validated);
-
-        return redirect('/products');
+        return redirect('products');
     }
 
     public function show(Product $product)
@@ -52,9 +41,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->validated());
+
+        return redirect('products');
     }
 
     public function destroy(Product $product)

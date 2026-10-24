@@ -10,6 +10,7 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 
 Route::view('/recipes', 'pages.recipes.index');
 Route::view('/ingredients', 'pages.ingredients.index');
