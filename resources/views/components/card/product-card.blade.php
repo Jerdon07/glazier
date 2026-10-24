@@ -47,7 +47,7 @@
                 >Show</a>
 
                 <a 
-                    href="products/{{ $product->id }}" 
+                    href="products/{{ $product->id }}/edit" 
                     class="py-1 px-2 rounded-2xl text-xs font-semibold text-indigo-900 hover:bg-taupe-100 hover:text-indigo-500
                     {{ $edit_button ? 'block' : 'hidden' }}"
                 >Edit</a>
