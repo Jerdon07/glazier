@@ -18,7 +18,7 @@
             :product=$product 
             edit_button
             delete_button
-            add_
+            add_recipe_button
         />
     </div>
 </x-layout>

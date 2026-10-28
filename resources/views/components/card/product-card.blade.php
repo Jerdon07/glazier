@@ -42,19 +42,19 @@
 
             <div class="flex">
                 <a 
-                    href="products/{{ $product->id }}" 
+                    href="/products/{{ $product->id }}" 
                     class="py-1 px-2 rounded-2xl text-xs font-semibold text-amber-800 hover:bg-taupe-100 hover:text-amber-600
                     {{ $show_button ? 'block' : 'hidden' }}"
                 >Show</a>
 
                 <a 
-                    href="products/{{ $product->id }}/add-ingredient"
+                    href="/products/{{ $product->id }}/add-recipe"
                     class="py-1 px-2 rounded-2xl text-xs font-semibold text-green-800 hover:bg-taupe-100 hover:text-green-600
                     {{ $add_recipe_button ? 'block' : 'hidden' }}"
                 >Add Recipe</a>
 
                 <a 
-                    href="products/{{ $product->id }}/edit" 
+                    href="/products/{{ $product->id }}/edit" 
                     class="py-1 px-2 rounded-2xl text-xs font-semibold text-indigo-900 hover:bg-taupe-100 hover:text-indigo-500
                     {{ $edit_button ? 'block' : 'hidden' }}"
                 >Edit</a>
