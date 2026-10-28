@@ -8,7 +8,7 @@
     'delete_button' => false,
     'show_button' => false,
     'edit_button' => false,
-    'add_ingredient_button' => false,
+    'add_recipe_button' => false,
 ])
 
 <x-card>
@@ -50,8 +50,8 @@
                 <a 
                     href="products/{{ $product->id }}/add-ingredient"
                     class="py-1 px-2 rounded-2xl text-xs font-semibold text-green-800 hover:bg-taupe-100 hover:text-green-600
-                    {{ $add_ingredient_button ? 'block' : 'hidden' }}"
-                >Add Ingredient</a>
+                    {{ $add_recipe_button ? 'block' : 'hidden' }}"
+                >Add Recipe</a>
 
                 <a 
                     href="products/{{ $product->id }}/edit" 

@@ -18,6 +18,7 @@
             :product=$product 
             edit_button
             delete_button
+            add_
         />
     </div>
 </x-layout>
