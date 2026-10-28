@@ -8,6 +8,7 @@
     'delete_button' => false,
     'show_button' => false,
     'edit_button' => false,
+    'add_ingredient_button' => false,
 ])
 
 <x-card>
@@ -47,6 +48,12 @@
                 >Show</a>
 
                 <a 
+                    href="products/{{ $product->id }}/add-ingredient"
+                    class="py-1 px-2 rounded-2xl text-xs font-semibold text-green-800 hover:bg-taupe-100 hover:text-green-600
+                    {{ $add_ingredient_button ? 'block' : 'hidden' }}"
+                >Add Ingredient</a>
+
+                <a 
                     href="products/{{ $product->id }}/edit" 
                     class="py-1 px-2 rounded-2xl text-xs font-semibold text-indigo-900 hover:bg-taupe-100 hover:text-indigo-500
                     {{ $edit_button ? 'block' : 'hidden' }}"
@@ -64,6 +71,6 @@
 
     <form action="/products/{{ $product->id }}" method="post" id="delete-form">
         @csrf
-        @method('DELETE');
+        @method('DELETE')
     </form>
 </x-card>
