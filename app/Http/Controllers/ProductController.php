@@ -61,7 +61,7 @@ class ProductController extends Controller
 
     public function add(Product $product)
     {
-        return view('pages.products.add', [
+        return view('pages.products.add-recipe', [
             'product' => $product,
         ]);
     }
