@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Ingredient;
 use App\Models\Product;
 use Illuminate\View\View;
 
@@ -17,7 +18,10 @@ class ProductController extends Controller
 
     public function create(): View
     {
-        return view('pages.products.create');
+
+        return view('pages.products.create', [
+            'ingredients' => Ingredient::all(),
+        ]);
     }
 
     public function store(ProductRequest $request)
@@ -53,5 +57,12 @@ class ProductController extends Controller
         $product->delete();
         
         return redirect('products');
+    }
+
+    public function add(Product $product)
+    {
+        return view('pages.products.add', [
+            'product' => $product,
+        ]);
     }
 }
