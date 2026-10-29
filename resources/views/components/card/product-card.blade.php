@@ -61,7 +61,7 @@
 
                 <button 
                     type="submit" 
-                    form="delete-form"
+                    form="{{ $product->id }}-delete-form"
                     class="py-1 px-2 rounded-2xl text-xs font-semibold text-red-800 hover:bg-taupe-100 hover:text-red-500 cursor-pointer
                     {{ $delete_button ? 'block' : 'hidden' }}"
                 >Delete</button>
@@ -69,7 +69,7 @@
         </div>
     </x-card.card-content>
 
-    <form action="/products/{{ $product->id }}" method="post" id="delete-form">
+    <form action="/products/{{ $product->id }}" method="post" id="{{ $product->id }}-delete-form">
         @csrf
         @method('DELETE')
     </form>
