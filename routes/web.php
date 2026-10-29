@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.index');
@@ -14,8 +14,8 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.delete');
 
-Route::post('/products/{product}/recipes', [IngredientController::class, 'store'])->name('product.recipe.store');
-Route::get('/products/{product}/recipes/create', [IngredientController::class, 'create'])->name('product.recipe.create');
+Route::post('/products/{product}/recipes', [RecipeController::class, 'store'])->name('product.recipe.store');
+Route::get('/products/{product}/recipes/create', [RecipeController::class, 'create'])->name('product.recipe.create');
 
 Route::view('/recipes', 'pages.recipes.index');
 Route::view('/ingredients', 'pages.ingredients.index');
