@@ -58,11 +58,4 @@ class ProductController extends Controller
         
         return redirect('products');
     }
-
-    public function add(Product $product)
-    {
-        return view('pages.products.add-recipe', [
-            'product' => $product,
-        ]);
-    }
 }
