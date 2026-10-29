@@ -31,4 +31,13 @@ class RecipeController extends Controller
             'product' => $validated['product_id'],
         ]);
     }
+
+    public function destroy(Product $product, Recipe $recipe)
+    {
+        $recipe->delete();
+
+        return redirect()->route('products.show', [
+            'product' => $product->id,
+        ]);
+    }
 }

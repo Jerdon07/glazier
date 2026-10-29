@@ -16,6 +16,7 @@ Route::delete('/products/{product}', [ProductController::class, 'destroy'])->nam
 
 Route::post('/products/{product}/recipes', [RecipeController::class, 'store'])->name('product.recipe.store');
 Route::get('/products/{product}/recipes/create', [RecipeController::class, 'create'])->name('product.recipe.create');
+Route::delete('/products/{product}/recipes/{recipe}', [RecipeController::class, 'destroy'])->name('products.recipes.destroy');
 
 Route::view('/recipes', 'pages.recipes.index');
 Route::view('/ingredients', 'pages.ingredients.index');
