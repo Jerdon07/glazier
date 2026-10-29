@@ -33,6 +33,8 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        $product->load('recipes.ingredient');
+
         return view('pages.products.show', [
             'product' => $product,
         ]);
