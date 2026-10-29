@@ -14,8 +14,9 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.delete');
 
-Route::post('/products/{product}/recipes', [RecipeController::class, 'store'])->name('product.recipe.store');
-Route::get('/products/{product}/recipes/create', [RecipeController::class, 'create'])->name('product.recipe.create');
+Route::post('/products/{product}/recipes', [RecipeController::class, 'store'])->name('products.recipe.store');
+Route::get('/products/{product}/recipes/create', [RecipeController::class, 'create'])->name('products.recipe.create');
+Route::get('/products/{product}/recipes/{recipe}/edit', [RecipeController::class, 'edit'])->name('products.recips.edit');
 Route::delete('/products/{product}/recipes/{recipe}', [RecipeController::class, 'destroy'])->name('products.recipes.destroy');
 
 Route::view('/recipes', 'pages.recipes.index');
