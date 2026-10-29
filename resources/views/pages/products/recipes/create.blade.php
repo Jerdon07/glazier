@@ -11,10 +11,12 @@
                 <form action="/products/{{ $product->id }}/recipes" method="POST">
                     @csrf
 
+                    <input type="hidden" name="product_id" value={{ $product->id }}>
+
                     <div class="flex flex-col">
                         <label for="recipe" class="text-sm">Recipe<span class="text-red-500"> *</span></label>
                         <select 
-                            name="recipe" 
+                            name="ingredient_id" 
                             id="recipe" 
                             class="w-full border rounded-2xl py-1 px-2 text-sm"
                         >
@@ -34,7 +36,7 @@
                         <label for="quantity" class="text-sm">Quantity<span class="text-red-500"> *</span></label>
                         <input 
                             type="number" 
-                            name="quantity" 
+                            name="quantity_required" 
                             id="quantity"
                             class="w-full border rounded-2xl py-1 px-2 text-sm"
                         >
