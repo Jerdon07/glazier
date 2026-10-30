@@ -32,6 +32,15 @@ class RecipeController extends Controller
         ]);
     }
 
+    public function edit(Product $product, Recipe $recipe)
+    {
+        return view('pages.products.recipes.edit', [
+            'product' => $product,
+            'recipe' => $recipe,
+            'ingredients' => Ingredient::all(),
+        ]);
+    }
+
     public function destroy(Product $product, Recipe $recipe)
     {
         $recipe->delete();
