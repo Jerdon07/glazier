@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RecipeRequest;
 use App\Models\Ingredient;
 use App\Models\Product;
 use App\Models\Recipe;
-use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
@@ -17,18 +17,13 @@ class RecipeController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(RecipeRequest $request)
     {
-        $validated = $request->validate([
-            'product_id' => ['required'],
-            'ingredient_id' => ['required'],
-            'quantity_required' => ['required'],
-        ]);
 
-        Recipe::create($validated);
+        Recipe::create($request->validated());
 
         return redirect()->route('products.show', [
-            'product' => $validated['product_id'],
+            'product' => $request->validated()['product_id'],
         ]);
     }
 
@@ -38,6 +33,15 @@ class RecipeController extends Controller
             'product' => $product,
             'recipe' => $recipe,
             'ingredients' => Ingredient::all(),
+        ]);
+    }
+
+    public function update(RecipeRequest $request, Product $product, Recipe $recipe)
+    {
+        $recipe->update($request->validated());
+
+        return redirect()->route('products.show', [
+            'product' => $product->id,
         ]);
     }
 
