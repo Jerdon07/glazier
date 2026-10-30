@@ -26,13 +26,6 @@ class IngredientController extends Controller
         return redirect()->route('ingredients.index');
     }
 
-    public function show(Ingredient $ingredient)
-    {
-        return view('pages.ingredients.show', [
-            'ingredient' => $ingredient,
-        ]);
-    }
-
     public function edit(Ingredient $ingredient)
     {
         return view('pages.ingredients.edit', [
