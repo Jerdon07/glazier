@@ -8,7 +8,7 @@
 
         <x-card>
             <x-card.card-content>
-                <form action="/products/{{ $product->id }}/recipes" method="POST">
+                <form action="/products/{{ $product->id }}/recipes/{{ $recipe->id }}" method="POST">
                     @csrf
                     @method('PUT')
 
