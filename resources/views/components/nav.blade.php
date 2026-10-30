@@ -17,7 +17,6 @@
     <div class="min-h-16 w-full bg-taupe-50 flex justify-center items-center gap-4 shadow-sm">
         <a href="/">Home</a>
         <a href="/products">Products</a>
-        <a href="/recipes">Recipes</a>
         <a href="/ingredients">Ingredients</a>
     </div>
 </nav>
