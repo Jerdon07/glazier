@@ -28,7 +28,7 @@ class ProductController extends Controller
     {
         Product::create($request->validated());
 
-        return redirect('products');
+        return redirect()->route('products.index');
     }
 
     public function show(Product $product)
@@ -51,7 +51,9 @@ class ProductController extends Controller
     {
         $product->update($request->validated());
 
-        return redirect('products');
+        return redirect()->route('products.show', [
+            'product' => $product->id,
+        ]);
     }
 
     public function destroy(Product $product)
