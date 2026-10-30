@@ -13,7 +13,6 @@ return new class extends Migration
             $table->string('name');
             $table->enum('unit', ['tbsp', 'tsp', 'cup', 'kg', 'g', 'ml']);
             $table->decimal('cost_per_unit');
-            $table->integer('stock_quantity');
             $table->timestamps();
         });
     }

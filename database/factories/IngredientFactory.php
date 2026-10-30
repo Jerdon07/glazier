@@ -19,7 +19,6 @@ class IngredientFactory extends Factory
             'name' => fake()->word(),
             'unit' => 'cup',
             'cost_per_unit' => fake()->numberBetween(50, 500),
-            'stock_quantity' => fake()->numberBetween(1, 10),
         ];
     }
 }
