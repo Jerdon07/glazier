@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Enums\IngredientUnitsEnum;
 use App\Http\Requests\IngredientRequest;
 use App\Models\Ingredient;
 
@@ -16,7 +17,9 @@ class IngredientController extends Controller
 
     public function create()
     {
-        return view('pages.ingredients.create');
+        return view('pages.ingredients.create', [
+            'units' => IngredientUnitsEnum::cases(),
+        ]);
     }
 
     public function store(IngredientRequest $request)
@@ -30,6 +33,7 @@ class IngredientController extends Controller
     {
         return view('pages.ingredients.edit', [
             'ingredient' => $ingredient,
+            'units' => IngredientUnitsEnum::cases(),
         ]);
     }
 
@@ -37,9 +41,7 @@ class IngredientController extends Controller
     {
         $ingredient->update($request->validated());
 
-        return redirect()->route('ingredients.show', [
-            'ingredient' => $ingredient->id,
-        ]);
+        return redirect()->route('ingredients.index');
     }
 
     public function destroy(Ingredient $ingredient)
