@@ -19,11 +19,7 @@
                         value="{{ $ingredient->name }}"
                         class="w-full border rounded-2xl py-1 px-2 text-sm"
                     >
-                    <div class="h-1 mt-1">
-                        @error('name')
-                            <p class="text-xs text-red-500">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-error name="name"/>
 
                     <div>
                         <label for="unit" class="text-sm">Unit of Measurement<span class="text-red-500"> *</span></label>
@@ -41,11 +37,7 @@
                                     {{ $unit }}</option>
                             @endforeach
                         </select>
-                        <div class="h-1 mt-1">
-                            @error('unit')
-                                <p class="text-xs text-red-500">{{ $message }}</p>
-                            @enderror
-                        </div>
+                        <x-error name="unit"/>
                     </div>
 
                     <div>
@@ -57,11 +49,7 @@
                             value="{{ $ingredient->cost_per_unit }}"
                             class="w-full border rounded-2xl py-1 px-2 text-sm"
                         >
-                        <div class="h-1 mt-1">
-                            @error('cost_per_unit')
-                                <p class="text-xs text-red-500">{{ $message }}</p>
-                            @enderror
-                        </div>
+                        <x-error name="cost_per_unit"/>
                     </div>
                 </div>
 

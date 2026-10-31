@@ -25,11 +25,7 @@
                                 <option value="{{ $ingredient->id }}">{{ $ingredient->name }} ({{ $ingredient->unit }})</option>
                             @endforeach
                         </select>
-                        <div class="h-1 mt-1">
-                            @error('recipe')
-                                <p class="text-xs text-red-500">{{ $message }}</p>
-                            @enderror
-                        </div>
+                        <x-error name="ingredient_id"/>
                     </div>
                     
                     <div>
@@ -40,11 +36,7 @@
                             id="quantity"
                             class="w-full border rounded-2xl py-1 px-2 text-sm"
                         >
-                        <div class="h-1 mt-1">
-                            @error('quantity')
-                            <p class="text-xs text-red-500">{{ $message }}</p>
-                            @enderror
-                        </div>
+                        <x-error name="quantity_required"/>
                     </div>
 
                     <div class="flex justify-end items-center space-x-1">

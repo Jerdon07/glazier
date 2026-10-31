@@ -19,11 +19,7 @@
                         value="{{ $product->name }}"
                         class="w-full border rounded-2xl py-1 px-2 text-sm"
                     >
-                    <div class="h-1 mt-1">
-                        @error('name')
-                            <p class="text-xs text-red-500">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-error name="name"/>
                 </div>
 
                 <div>
@@ -35,11 +31,7 @@
                         value="{{ $product->price }}"
                         class="w-full border rounded-2xl py-1 px-2 text-sm"
                     >
-                    <div class="h-1 mt-1">
-                        @error('price')
-                            <p class="text-xs text-red-500">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-error name="price"/>
                 </div>
 
                 <div class="flex space-x-2">
@@ -59,11 +51,7 @@
                         id="description" 
                         class="w-full border rounded-2xl py-1 px-2 text-sm"
                     >{{ $product->description }}</textarea>
-                    <div class="h-1 mt-1">
-                        @error('description')
-                            <p class="text-xs text-red-500">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-error name="description"/>
                 </div>
 
                 <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4">

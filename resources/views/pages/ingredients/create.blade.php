@@ -21,11 +21,7 @@
                         value="{{ old('name') }}"
                         class="w-full border rounded-2xl py-1 px-2 text-sm"
                     >
-                    <div class="h-1 mt-1">
-                        @error('name')
-                            <p class="text-xs text-red-500">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-error name="name"/>
                 </div>
 
                 <div>
@@ -40,11 +36,7 @@
                             <option value="{{ $unit }}">{{ $unit }}</option>
                         @endforeach
                     </select>
-                    <div class="h-1 mt-1">
-                        @error('unit')
-                            <p class="text-xs text-red-500">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-error name="unit"/>
                 </div>
 
                 <div>
@@ -56,11 +48,7 @@
                         value="{{ old('cost_per_unit') }}"
                         class="w-full border rounded-2xl py-1 px-2 text-sm"
                     >
-                    <div class="h-1 mt-1">
-                        @error('cost_per_unit')
-                            <p class="text-xs text-red-500">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <x-error name="cost_per_unit"/>
                 </div>
 
                 <button type="submit" class="rounded-2xl p-2 bg-amber-500 hover:bg-amber-600 shadow cursor-pointer text-taupe-50 font-semibold">
