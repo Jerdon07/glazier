@@ -1,22 +1,15 @@
-<nav class="w-full min-h-16">
-    {{-- Header --}}
-    <div class="w-full min-h-16 flex justify-center items-center px-4 bg-amber-600">
-        <div class="w-full max-w-6xl mx-auto flex justify-between items-center">
-            <div>
-                <h1 class="text-taupe-50 font-bold">Glazier</h1>
-                <p class="text-xs text-taupe-50">Glazed with perfection</p>
-            </div>
+<nav class="navbar bg-base-100 shadow-sm">
 
-            <div>
-                <h1 class="text-taupe-50">Hello User</h1>
-            </div>
-        </div>
+    {{-- Logo --}}
+    <div class="flex-1">
+        <a href="/" class="btn btn-ghost text-xl">Glazier</a>
     </div>
 
-    {{-- Navigation --}}
-    <div class="min-h-16 w-full bg-taupe-50 flex justify-center items-center gap-4 shadow-sm">
-        <a href="/">Home</a>
-        <a href="/products">Products</a>
-        <a href="/ingredients">Ingredients</a>
+    {{-- Pages --}}
+    <div class="flex-none">
+        <ul class="menu menu-horizontal px-1">
+            <li><a href="/products">Products</a></li>
+            <li><a href="/ingredients">Ingredients</a></li>
+        </ul>
     </div>
 </nav>
