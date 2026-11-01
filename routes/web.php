@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.index');
+
+/* Registration Routes */
+Route::get('/register', [RegistrationController::class, 'create'])->name('register.create');
+Route::post('/register', [RegistrationController::class, 'store'])->name('register.store');
 
 /* Product Routes */
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
