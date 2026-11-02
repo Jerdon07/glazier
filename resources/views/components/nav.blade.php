@@ -14,7 +14,7 @@
                 @endguest
 
                 @auth
-                    <button type="submit" form="logout-form" class="btn btn-ghost btn-wide">Logout</button>
+                    <button type="submit" form="logout-form" class="btn btn-wide">Logout</button>
                 @endauth
             </ul>
         </div>
