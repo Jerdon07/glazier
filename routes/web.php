@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RecipeController;
@@ -11,6 +12,9 @@ Route::view('/', 'pages.index')->name('home');
 /* Registration Routes */
 Route::get('/register', [RegistrationController::class, 'create'])->name('register.create');
 Route::post('/register', [RegistrationController::class, 'store'])->name('register.store');
+
+/* Session Routes */
+Route::delete('/logout', [SessionController::class, 'destroy'])->name('session.destroy');
 
 /* Product Routes */
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
