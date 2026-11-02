@@ -10,34 +10,44 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'pages.index')->name('home');
 
 /* Registration Routes */
-Route::get('/register', [RegistrationController::class, 'create'])->name('register.create');
-Route::post('/register', [RegistrationController::class, 'store'])->name('register.store');
+Route::middleware('guest')->name('register.')->group(function() {
+    Route::get('/register', [RegistrationController::class, 'create'])->name('create');
+    Route::post('/register', [RegistrationController::class, 'store'])->name('store');
+});
 
 /* Session Routes */
-Route::get('/login', [SessionController::class, 'create'])->name('session.create');
-Route::post('/login', [SessionController::class, 'store'])->name('session.store');
-Route::delete('/logout', [SessionController::class, 'destroy'])->name('session.destroy');
+Route::middleware('guest')->name('sessions.')->group(function() {
+    Route::get('/login', [SessionController::class, 'create'])->name('create');
+    Route::post('/login', [SessionController::class, 'store'])->name('store');
+});
+Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('destroy');
 
 /* Product Routes */
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
-Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
-Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::middleware('auth')->prefix('products')->name('products.')->group(function() {
+    Route::get('/', [ProductController::class, 'index'])->name('index');
+    Route::post('/', [ProductController::class, 'store'])->name('store');
+    Route::get('/create', [ProductController::class, 'create'])->name('create');
+    Route::get('/{product}', [ProductController::class, 'show'])->name('show');
+    Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('edit');
+    Route::put('/{product}', [ProductController::class, 'update'])->name('update');
+    Route::delete('/{product}', [ProductController::class, 'destroy'])->name('destroy');
 
-/* Recipe Routes */
-Route::post('/products/{product}/recipes', [RecipeController::class, 'store'])->name('products.recipe.store');
-Route::get('/products/{product}/recipes/create', [RecipeController::class, 'create'])->name('products.recipe.create');
-Route::get('/products/{product}/recipes/{recipe}/edit', [RecipeController::class, 'edit'])->name('products.recips.edit');
-Route::put('/products/{product}/recipes/{recipe}', [RecipeController::class, 'update'])->name('rproducts.recipes.update');
-Route::delete('/products/{product}/recipes/{recipe}', [RecipeController::class, 'destroy'])->name('products.recipes.destroy');
+    Route::prefix('{product}/recipes')->name('recipes.')->group(function() {
+        /* Recipe Routes */
+        Route::post('/', [RecipeController::class, 'store'])->name('store');
+        Route::get('/create', [RecipeController::class, 'create'])->name('create');
+        Route::get('/{recipe}/edit', [RecipeController::class, 'edit'])->name('edit');
+        Route::put('/{recipe}', [RecipeController::class, 'update'])->name('update');
+        Route::delete('/{recipe}', [RecipeController::class, 'destroy'])->name('destroy');
+    });
+});
 
 /* Ingredient Routes */
-Route::get('/ingredients', [IngredientController::class, 'index'])->name('ingredients.index');
-Route::post('/ingredients', [IngredientController::class, 'store'])->name('ingredients.store');
-Route::get('/ingredients/create', [IngredientController::class, 'create'])->name('ingredients.create');
-Route::get('/ingredients/{ingredient}/edit', [IngredientController::class, 'edit'])->name('ingredients.edit');
-Route::put('/ingredients/{ingredient}', [IngredientController::class, 'update'])->name('ingredients.update');
-Route::delete('/ingredients/{ingredient}', [IngredientController::class, 'destroy'])->name('ingredients.destroy');
+Route::middleware('auth')->prefix('ingredients')->name('ingredients.')->group(function() {
+    Route::get('/', [IngredientController::class, 'index'])->name('index');
+    Route::post('/', [IngredientController::class, 'store'])->name('store');
+    Route::get('/create', [IngredientController::class, 'create'])->name('create');
+    Route::get('/{ingredient}/edit', [IngredientController::class, 'edit'])->name('edit');
+    Route::put('/{ingredient}', [IngredientController::class, 'update'])->name('update');
+    Route::delete('/{ingredient}', [IngredientController::class, 'destroy'])->name('destroy');
+});
