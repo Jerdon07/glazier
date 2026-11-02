@@ -23,7 +23,7 @@ class IngredientRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:2', 'max:100'],
             'unit' => ['required', 'string', 'min:1', 'max:20'],
-            'cost_per_unit' => ['required', 'numeric', 'min_digits:1', 'max_digits:3'],
+            'cost_per_unit' => ['required', 'numeric'],
         ];
     }
 }
