@@ -13,7 +13,7 @@
                 @endguest
 
                 @auth
-                    <button type="submit" form="logout-form">Logout</button>
+                    <button type="submit" form="logout-form" class="btn btn-ghost btn-wide">Logout</button>
                 @endauth
             </ul>
         </div>
@@ -31,7 +31,7 @@
         </ul>
     </div>
 
-    <form action="/logout" method="post">
+    <form action="/logout" method="post" id="logout-form">
         @csrf
         @method('delete')
     </form>
