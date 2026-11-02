@@ -29,7 +29,10 @@
             </ul>
         </div>
 
-        <a href="/" class="btn btn-ghost text-xl whitespace-nowrap">Glazier</a>
+        <a href="/" class="btn btn-ghost text-xl whitespace-nowrap">
+            <x-lucide-donut class="size-5" />
+            Glazier
+        </a>
     </div>
 
     {{-- Pages --}}
