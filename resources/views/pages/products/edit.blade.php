@@ -14,7 +14,8 @@
                 type="text" 
                 name="name"
                 id="name"
-                value="{{ old('name') ?? $product->name }}"
+                placeholder="Product"
+                value="{{ old('name', $product->name) }}"
                 class="input @error('name') input-error @enderror"
             >
             <x-error name="name"/>
@@ -24,8 +25,9 @@
                 type="number" 
                 name="price" 
                 id="price"
-                value="{{ old('price') ?? $product->price }}"
-                class="input @error('name') input-error @enderror"
+                placeholder="00"
+                value="{{ old('price', $product->price) }}"
+                class="input @error('price') input-error @enderror"
             >
             <x-error name="price"/>
 
@@ -44,8 +46,8 @@
             <textarea 
                 name="description" 
                 id="description" 
-                class="textarea @error('name') input-error @enderror"
-                placeholder="description of the product..."
+                class="textarea @error('description') input-error @enderror"
+                placeholder="Description of the product..."
             >{{ $product->description }}</textarea>
             <x-error name="description"/>
 
