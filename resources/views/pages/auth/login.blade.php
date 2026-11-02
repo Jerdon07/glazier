@@ -20,11 +20,16 @@
             <input 
                 type="password" 
                 name="password" 
-                class="input @error('email') input-error @enderror" 
+                class="input @error('password') input-error @enderror" 
                 placeholder="Password" 
                 required 
             />
+            <x-error name="password" />
+
             <button class="btn btn-neutral mt-4">Login</button>
+
+            <p class="text-end text-xs mt-2">Don't have an account? <a href="/register" class="font-bold hover:underline">Click here!</a></p>
+            
         </fieldset>
     </form>
 </x-auth-layout>

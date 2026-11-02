@@ -1,6 +1,6 @@
 <x-auth-layout>
     <form action="/register" method="post">
-        <fieldset class="fieldset mx-auto mt-16 bg-base-100 border-base-300 rounded-box w-xs border p-4">
+        <fieldset class="fieldset mx-auto mt-4 bg-base-100 border-base-300 rounded-box w-xs border p-4">
             <legend class="fieldset-legend">Register</legend>
 
             @csrf
@@ -38,6 +38,9 @@
             <x-error name="password" />
             
             <button class="btn btn-neutral mt-4">Register</button>
+
+            <p class="text-end text-xs mt-2">Already have an account? <a href="/login" class="font-bold hover:underline">Sign in!</a></p>
+
         </fieldset>
     </form>
 </x-auth-layout>
