@@ -5,7 +5,7 @@
 
             @csrf
 
-            <label class="label">Name</label>
+            <label for="name" class="label">Name</label>
             <input 
                 type="text" 
                 name="name" 
@@ -16,7 +16,7 @@
             />
             <x-error name="name" />
 
-            <label class="label">Email</label>
+            <label for="email" class="label">Email</label>
             <input 
                 type="email" 
                 name="email" 
@@ -27,7 +27,7 @@
             />
             <x-error name="email" />
             
-            <label class="label">Password</label>
+            <label for="password" class="label">Password</label>
             <input 
                 type="password" 
                 name="password" 
