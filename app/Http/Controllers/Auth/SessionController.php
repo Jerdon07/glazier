@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionController extends Controller
 {
+    public function create()
+    {
+        return view('pages.auth.login');
+    }
+
     public function destroy()
     {
         Auth::logout();

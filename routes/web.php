@@ -14,6 +14,7 @@ Route::get('/register', [RegistrationController::class, 'create'])->name('regist
 Route::post('/register', [RegistrationController::class, 'store'])->name('register.store');
 
 /* Session Routes */
+Route::get('/login', [SessionController::class, 'create'])->name('session.create');
 Route::delete('/logout', [SessionController::class, 'destroy'])->name('session.destroy');
 
 /* Product Routes */
