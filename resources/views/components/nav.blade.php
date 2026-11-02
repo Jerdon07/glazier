@@ -8,7 +8,13 @@
             </div>
 
             <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                @guest
                 <li><a href="/register">Register</a></li>
+                @endguest
+
+                @auth
+                    <button type="submit" form="logout-form">Logout</button>
+                @endauth
             </ul>
         </div>
 
@@ -24,4 +30,9 @@
             <li><a href="/ingredients">Ingredients</a></li>
         </ul>
     </div>
+
+    <form action="/logout" method="post">
+        @csrf
+        @method('delete')
+    </form>
 </nav>
