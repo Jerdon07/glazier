@@ -6,11 +6,23 @@
             @csrf
 
             <label class="label">Email</label>
-            <input type="email" name="email" class="input" placeholder="Email" required />
+            <input 
+                type="email" 
+                name="email" 
+                class="input @error('email') input-error @enderror" 
+                placeholder="Email" 
+                required
+            />
+            <x-error name="email" />
             
             <label class="label">Password</label>
-            <input type="password" name="password" class="input" placeholder="Password" required />
-            
+            <input 
+                type="password" 
+                name="password" 
+                class="input @error('email') input-error @enderror" 
+                placeholder="Password" 
+                required 
+            />
             <button class="btn btn-neutral mt-4">Login</button>
         </fieldset>
     </form>
