@@ -1,67 +1,61 @@
 <x-layout>
-    <x-heading title="Edit your product" />
+    <form 
+        action="/products/{{ $product->id }}"
+        method="post"
+    >
+        <fieldset class="fieldset mx-auto bg-base-100 border-base-300 rounded-box md:w-fit border p-4">
+            <legend class="fieldset-legend">Edit your product</legend>
 
-    <x-card>
-        <form 
-            action="/products/{{ $product->id }}"
-            method="post"
-        >
             @csrf
             @method('PUT')
 
-            <x-card.card-content>
-                <div>
-                    <label for="name" class="text-sm">Product Name<span class="text-red-500"> *</span></label>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        id="name"
-                        value="{{ $product->name }}"
-                        class="w-full border rounded-2xl py-1 px-2 text-sm"
-                    >
-                    <x-error name="name"/>
-                </div>
+            <label for="name" class="label">Product Name<span class="text-red-500"> *</span></label>
+            <input 
+                type="text" 
+                name="name"
+                id="name"
+                value="{{ old('name') ?? $product->name }}"
+                class="input @error('name') input-error @enderror"
+            >
+            <x-error name="name"/>
 
-                <div>
-                    <label for="price" class="text-sm">Price<span class="text-red-500"> *</span></label>
-                    <input 
-                        type="number" 
-                        name="price" 
-                        id="price"
-                        value="{{ $product->price }}"
-                        class="w-full border rounded-2xl py-1 px-2 text-sm"
-                    >
-                    <x-error name="price"/>
-                </div>
+            <label for="price" class="label">Price<span class="text-red-500"> *</span></label>
+            <input 
+                type="number" 
+                name="price" 
+                id="price"
+                value="{{ old('price') ?? $product->price }}"
+                class="input @error('name') input-error @enderror"
+            >
+            <x-error name="price"/>
 
-                <div class="flex space-x-2">
-                    <label for="is_available" class="text-sm">Available</label>
-                    <input 
-                        type="checkbox" 
-                        name="is_available" 
-                        id="is_available"
-                        checked
-                    >
-                </div>
+            <label for="is_available" class="label">
+                <input 
+                    type="checkbox" 
+                    name="is_available" 
+                    id="is_available"
+                    {{ $product->is_available ? 'checked' : '' }}
+                    class="checkbox"
+                >
+                is this available?
+            </label>
 
-                <div>
-                    <label for="description" class="text-sm">Description</label>
-                    <textarea 
-                        name="description" 
-                        id="description" 
-                        class="w-full border rounded-2xl py-1 px-2 text-sm"
-                    >{{ $product->description }}</textarea>
-                    <x-error name="description"/>
-                </div>
+            <label for="description" class="text-sm">Description</label>
+            <textarea 
+                name="description" 
+                id="description" 
+                class="textarea @error('name') input-error @enderror"
+                placeholder="description of the product..."
+            >{{ $product->description }}</textarea>
+            <x-error name="description"/>
 
-                <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <a href="/products" class="rounded-2xl bg-taupe-200 hover:bg-taupe-300 font-semibold p-2 flex justify-center">Cancel</a>
+            <div class="w-full grid grid-cols-2 gap-4">
+                <a href="/products" class="btn btn-wide btn-soft">Cancel</a>
 
-                    <button type="submit" class="rounded-2xl p-2 bg-amber-500 hover:bg-amber-600 shadow cursor-pointer text-taupe-50 font-semibold">
-                        Update Product
-                    </button>
-                </div>
-            </x-card.card-content>
-        </form>
-    </x-card>
+                <button type="submit" class="btn btn-wide btn-secondary">
+                    Update Product
+                </button>
+            </div>
+        </fieldset>
+    </form>
 </x-layout>
