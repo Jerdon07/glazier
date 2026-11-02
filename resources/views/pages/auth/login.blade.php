@@ -10,6 +10,7 @@
                 type="email" 
                 name="email" 
                 class="input @error('email') input-error @enderror" 
+                value="{{ old('email') }}"
                 placeholder="Email" 
                 required
             />

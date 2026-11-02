@@ -22,7 +22,7 @@ class SessionController extends Controller
 
         if (! Auth::attempt($validated)) {
             return back()->withErrors([
-                'email' => 'The Provided Credentials do not match our records.'
+                'email' => 'The provided credentials do not match our records.'
             ]);
         };
 

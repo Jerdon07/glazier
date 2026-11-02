@@ -6,13 +6,36 @@
             @csrf
 
             <label class="label">Name</label>
-            <input type="text" name="name" class="input" placeholder="Name" required />
+            <input 
+                type="text" 
+                name="name" 
+                class="input @error('name') input-error @enderror" 
+                value="{{ old('name') }}"
+                placeholder="Name" 
+                required 
+            />
+            <x-error name="name" />
 
             <label class="label">Email</label>
-            <input type="email" name="email" class="input" placeholder="Email" required />
+            <input 
+                type="email" 
+                name="email" 
+                class="input @error('email') input-error @enderror"
+                value="{{ old('email') }}" 
+                placeholder="Email" 
+                required 
+            />
+            <x-error name="email" />
             
             <label class="label">Password</label>
-            <input type="password" name="password" class="input" placeholder="Password" required />
+            <input 
+                type="password" 
+                name="password" 
+                class="input @error('password') input-error @enderror" 
+                placeholder="Password" 
+                required 
+            />
+            <x-error name="password" />
             
             <button class="btn btn-neutral mt-4">Register</button>
         </fieldset>
