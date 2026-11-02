@@ -1,62 +1,58 @@
 <x-layout>
-    <x-heading title="Edit your ingredients" />
+    <form 
+        action="/ingredients/{{ $ingredient->id }}" 
+        method="post"
+    >
+        <fieldset class="fieldset mx-auto mt-16 bg-base-100 border-base-300 rounded-box md:w-xs border p-4">
+            <legend class="fieldset-legend">Edit Ingredient</legend>
 
-    <x-card>
-        <form 
-            action="/ingredients/{{ $ingredient->id }}" 
-            method="post"
-        >
             @csrf
             @method('PUT')
 
-            <x-card.card-content>
-                <div>
-                    <label for="name" class="text-sm">Ingredient<span class="text-red-500"> *</span></label>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        id="name"
-                        value="{{ $ingredient->name }}"
-                        class="w-full border rounded-2xl py-1 px-2 text-sm"
+            <label for="name" class="label">Ingredient<span class="text-red-500"> *</span></label>
+            <input 
+                type="text" 
+                name="name" 
+                id="name"
+                value="{{ old('name') ?? $ingredient->name }}"
+                class="input @error('name') input-error @enderror"
+            >
+            <x-error name="name"/>
+
+            <label for="unit" class="label">Unit of Measurement<span class="text-error"> *</span></label>
+            <select 
+                name="unit" 
+                id="unit"
+                class="select @error('unit') select-error @enderror"
+            >
+                <option disabled selected>Select a unit</option>
+                @foreach ($units as $unit)
+                    <option 
+                        :value="$unit"
+                        {{ $unit == $ingredient->unit ? 'selected' : '' }}
                     >
-                    <x-error name="name"/>
+                        {{ $unit }}</option>
+                @endforeach
+            </select>
+            <x-error name="unit"/>
 
-                    <div>
-                        <label for="unit" class="text-sm">Unit of Measurement<span class="text-red-500"> *</span></label>
-                        <select 
-                            name="unit" 
-                            id="unit"
-                            class="w-full border rounded-2xl py-1 px-2 text-sm"
-                        >
-                            <option value="" disabled selected>Select a unit</option>
-                            @foreach ($units as $unit)
-                                <option 
-                                    :value="$unit"
-                                    {{ $unit == $ingredient->unit ? 'selected' : '' }}
-                                >
-                                    {{ $unit }}</option>
-                            @endforeach
-                        </select>
-                        <x-error name="unit"/>
-                    </div>
+            <label for="cost_per_unit" class="label">Cost per Unit<span class="text-error"> *</span></label>
+            <input 
+                type="number" 
+                name="cost_per_unit" 
+                id="cost_per_unit"
+                value="{{ old('cost_per_unit') ?? $ingredient->cost_per_unit }}"
+                class="input @error('cost_per_unit') input-error @enderror"
+            >
+            <x-error name="cost_per_unit"/>
 
-                    <div>
-                        <label for="cost_per_unit" class="text-sm">Cost per Unit<span class="text-red-500"> *</span></label>
-                        <input 
-                            type="number" 
-                            name="cost_per_unit" 
-                            id="cost_per_unit"
-                            value="{{ $ingredient->cost_per_unit }}"
-                            class="w-full border rounded-2xl py-1 px-2 text-sm"
-                        >
-                        <x-error name="cost_per_unit"/>
-                    </div>
-                </div>
+            <div class="grid grid-cols-3 gap-4">
+                <a href="/ingredients" class="btn btn-soft btn-wide">Cancel</a>
 
-                <button type="submit" class="rounded-2xl p-2 bg-amber-500 hover:bg-amber-600 shadow cursor-pointer text-taupe-50 font-semibold">
+                <button type="submit" class="btn btn-wide btn-secondary col-span-2">
                     Update Ingredient
                 </button>
-            </x-card.card-content>
-        </form>
-    </x-card>
+            </div>
+        </fieldset>
+    </form>
 </x-layout>
