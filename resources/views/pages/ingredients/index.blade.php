@@ -1,6 +1,6 @@
 <x-layout>
     <div class="m-4 space-y-6">
-        <div class="w-full flex justify-between items-end">
+        <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
             {{-- Heading --}}
             <x-heading
                 title="My Ingredients"
@@ -8,7 +8,9 @@
             />
 
             {{-- Create Button --}}
-            <a href="/ingredients/create" class="bg-amber-600 text-taupe-50 rounded-2xl py-1 px-3 hover:bg-amber-700">Add Ingredient</a>
+            <a href="/ingredients/create" class="self-end md:self-auto btn btn-secondary">
+                Add Ingredient
+            </a>
         </div>
 
         {{-- Ingredients --}}
