@@ -13,6 +13,24 @@ class SessionController extends Controller
         return view('pages.auth.login');
     }
 
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => ['required', 'string', 'email', 'exists:users,email'],
+            'password' => ['required', 'string', 'min:8', 'max:255'],
+        ]);
+
+        if (! Auth::attempt($validated)) {
+            return back()->withErrors([
+                'email' => 'The Provided Credentials do not match our records.'
+            ]);
+        };
+
+        $request->session()->regenerate();
+
+        return redirect()->route('home');
+    }
+
     public function destroy()
     {
         Auth::logout();
