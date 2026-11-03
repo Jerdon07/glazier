@@ -37,10 +37,17 @@
 
     {{-- Pages --}}
     <div class="navbar-end flex-none">
-        <ul class="menu menu-horizontal flex-nowrap px-1">
-            <li><a href="/products" class="whitespace-nowrap">Products</a></li>
-            <li><a href="/ingredients" class="whitespace-nowrap">Ingredients</a></li>
-        </ul>
+        @auth
+            <ul class="menu menu-horizontal flex-nowrap px-1">
+                @cannot('is-admin')
+                    <li><a href="/products" class="whitespace-nowrap">Products</a></li>
+                @endcannot
+
+                @can('is-admin')
+                    <li><a href="/ingredients" class="whitespace-nowrap">Ingredients</a></li>
+                @endcan
+            </ul>
+        @endauth
     </div>
 
     <form action="/logout" method="post" id="logout-form">
