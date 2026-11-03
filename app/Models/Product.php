@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Override;
 
-#[Fillable(['name', 'description', 'price', 'is_available'])]
+#[Fillable(['user_id', 'name', 'description', 'price', 'is_available'])]
 class Product extends Model
 {
     /** @use HasFactory<\Database\Factories\ProductFactory> */
