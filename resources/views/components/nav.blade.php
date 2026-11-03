@@ -4,12 +4,7 @@
     <div class="navbar-start flex-1 min-w-0">
         <div class="dropdown flex-none">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-                <svg aria-label="Menu" xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-                </svg>
+                <x-lucide-menu class="size-6" />
             </div>
 
             <ul tabindex="-1"
@@ -20,6 +15,9 @@
                 @endguest
 
                 @auth
+                    <li class="w-full text-center p-2">
+                        {{ auth()->user()->name }}
+                    </li>
                     <li>
                         <button type="submit" form="logout-form" class="btn btn-wide">
                             Logout
@@ -29,7 +27,7 @@
             </ul>
         </div>
 
-        <a href="/" class="btn btn-ghost text-xl whitespace-nowrap">
+        <a href="{{ route('home') }}" class="btn btn-ghost text-xl whitespace-nowrap">
             <x-lucide-donut class="size-5" />
             Glazier
         </a>
@@ -40,17 +38,17 @@
         @auth
             <ul class="menu menu-horizontal flex-nowrap px-1">
                 @cannot('is-admin')
-                    <li><a href="/products" class="whitespace-nowrap">Products</a></li>
+                    <li><a href="{{ route('products.index') }}" class="whitespace-nowrap">Products</a></li>
                 @endcannot
 
                 @can('is-admin')
-                    <li><a href="/ingredients" class="whitespace-nowrap">Ingredients</a></li>
+                    <li><a href="{{ route('ingredients.index') }}" class="whitespace-nowrap">Ingredients</a></li>
                 @endcan
             </ul>
         @endauth
     </div>
 
-    <form action="/logout" method="post" id="logout-form">
+    <form action="{{ route('sessions.destroy') }}" method="post" id="logout-form">
         @csrf
         @method('delete')
     </form>
