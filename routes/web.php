@@ -20,7 +20,7 @@ Route::middleware('guest')->name('sessions.')->group(function() {
     Route::get('/login', [SessionController::class, 'create'])->name('create');
     Route::post('/login', [SessionController::class, 'store'])->name('store');
 });
-Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('destroy');
+Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('sessions.destroy');
 
 /* Ingredient Routes */
 Route::middleware('auth', 'admin')->prefix('ingredients')->name('ingredients.')->group(function() {
