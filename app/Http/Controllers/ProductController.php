@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Models\Ingredient;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -12,7 +13,7 @@ class ProductController extends Controller
     public function index(): View
     {
         return view('pages.products.index', [
-            'products' => Product::all(),
+            'products' => Auth::user()->products,
         ]);
     }
 
@@ -26,7 +27,7 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        Product::create($request->validated());
+        Auth::user()->products()->create($request->validated());
 
         return redirect()->route('products.index');
     }
