@@ -22,6 +22,16 @@ Route::middleware('guest')->name('sessions.')->group(function() {
 });
 Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('destroy');
 
+/* Ingredient Routes */
+Route::middleware('auth', 'admin')->prefix('ingredients')->name('ingredients.')->group(function() {
+    Route::get('/', [IngredientController::class, 'index'])->name('index');
+    Route::post('/', [IngredientController::class, 'store'])->name('store');
+    Route::get('/create', [IngredientController::class, 'create'])->name('create');
+    Route::get('/{ingredient}/edit', [IngredientController::class, 'edit'])->name('edit');
+    Route::put('/{ingredient}', [IngredientController::class, 'update'])->name('update');
+    Route::delete('/{ingredient}', [IngredientController::class, 'destroy'])->name('destroy');
+});
+
 /* Product Routes */
 Route::middleware('auth')->prefix('products')->name('products.')->group(function() {
     Route::get('/', [ProductController::class, 'index'])->name('index');
@@ -40,14 +50,4 @@ Route::middleware('auth')->prefix('products')->name('products.')->group(function
         Route::put('/{recipe}', [RecipeController::class, 'update'])->name('update');
         Route::delete('/{recipe}', [RecipeController::class, 'destroy'])->name('destroy');
     });
-});
-
-/* Ingredient Routes */
-Route::middleware('auth')->prefix('ingredients')->name('ingredients.')->group(function() {
-    Route::get('/', [IngredientController::class, 'index'])->name('index');
-    Route::post('/', [IngredientController::class, 'store'])->name('store');
-    Route::get('/create', [IngredientController::class, 'create'])->name('create');
-    Route::get('/{ingredient}/edit', [IngredientController::class, 'edit'])->name('edit');
-    Route::put('/{ingredient}', [IngredientController::class, 'update'])->name('update');
-    Route::delete('/{ingredient}', [IngredientController::class, 'destroy'])->name('destroy');
 });
