@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Models\Ingredient;
 use App\Models\Product;
+use App\Notifications\ProductCreated;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
@@ -44,7 +45,9 @@ class ProductController extends Controller
     {
         Gate::authorize('create', Product::class);
 
-        Auth::user()->products()->create($request->validated());
+        $product = Auth::user()->products()->create($request->validated());
+
+        Auth::user()->notify(new ProductCreated($product));
 
         return redirect()->route('products.index');
     }
