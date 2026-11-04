@@ -35,4 +35,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product::class);
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->id === 1;
+    }
 }
