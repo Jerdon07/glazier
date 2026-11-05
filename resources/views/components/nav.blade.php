@@ -45,6 +45,8 @@
                     <li><a href="{{ route('ingredients.index') }}" class="whitespace-nowrap">Ingredients</a></li>
                 @endcan
             </ul>
+
+            <x-notifications-dropdown />
         @endauth
     </div>
 
