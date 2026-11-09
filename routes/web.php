@@ -5,10 +5,20 @@ use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RecipeController;
+use App\Models\Ingredient;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.index')->name('home');
+
+Route::view('/dashboard', 'pages.dashboard', [
+    'users_count' => User::count(),
+    'products_count' => Product::count(),
+    'ingredients_count' => Ingredient::count(),
+    'latest_products' => Product::latest()->take(5)->get(),
+])->middleware('auth');
 
 /* Registration Routes */
 Route::middleware('guest')->name('register.')->group(function() {
