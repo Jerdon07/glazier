@@ -41,26 +41,34 @@
                     href="/products/{{ $product->id }}"
                     class="btn btn-soft btn-xs
                     {{ $show_button ? 'visible' : 'hidden' }}"
-                >Show</a>
+                >
+                    <x-lucide-eye class="size-4"/>
+                </a>
 
                 <a 
                     href="/products/{{ $product->id }}/recipes/create"
                     class="btn btn-accent btn-soft btn-xs
                     {{ $add_recipe_button ? 'visible' : 'hidden' }}"
-                >Add Recipe</a>
+                >
+                    <x-lucide-plus class="size-4"/>
+                </a>
 
                 <a 
                     href="/products/{{ $product->id }}/edit" 
                     class="btn btn-info btn-soft btn-xs
                     {{ $edit_button ? 'visible' : 'hidden' }}"
-                >Edit</a>
+                >
+                    <x-lucide-pencil class="size-4"/>
+                </a>
 
                 <button 
                     type="submit" 
                     form="{{ $product->id }}-delete-form"
                     class="btn btn-error btn-soft btn-xs
                     {{ $delete_button ? 'visible' : 'hidden' }}"
-                >Delete</button>
+                >
+                    <x-lucide-trash-2 class="size-4"/>
+                </button>
             </div>
         </div>
     </div>
