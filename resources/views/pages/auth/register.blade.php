@@ -37,7 +37,7 @@
             />
             <x-error name="password" />
             
-            <button class="btn btn-neutral mt-4">Register</button>
+            <button data-test="register-button" class="btn btn-neutral mt-4">Register</button>
 
             <p class="text-end text-xs mt-2">Already have an account? <a href="/login" class="font-bold hover:underline">Sign in!</a></p>
 
