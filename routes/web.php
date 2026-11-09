@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RecipeController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.index')->name('home');
@@ -50,4 +51,16 @@ Route::middleware('auth')->prefix('products')->name('products.')->group(function
         Route::put('/{recipe}', [RecipeController::class, 'update'])->name('update');
         Route::delete('/{recipe}', [RecipeController::class, 'destroy'])->name('destroy');
     });
+});
+
+Route::post('/notifications/read', function (Request $request) {
+    $request->validate([
+        'notification_id' => ['required', 'string']
+    ]);
+
+    $notification = auth()->user()->notifications()->where('id', $request->input('notification_id'))->first();
+
+    $notification->markAsRead();
+
+    return redirect()->back();
 });
