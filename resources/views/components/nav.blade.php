@@ -38,11 +38,31 @@
         @auth
             <ul class="menu menu-horizontal flex-nowrap px-1">
                 @cannot('is-admin')
-                    <li><a href="{{ route('products.index') }}" class="whitespace-nowrap">Products</a></li>
+                    <li>
+                        <a 
+                            href="{{ route('products.index') }}"
+                            @class([
+                                'whitespace-nowrap', 
+                                'bg-base-200 shadow-sm' => request()->routeIs('products.index'),
+                            ])
+                        >
+                            Products
+                        </a>
+                    </li>
                 @endcannot
 
                 @can('is-admin')
-                    <li><a href="{{ route('ingredients.index') }}" class="whitespace-nowrap">Ingredients</a></li>
+                    <li>
+                        <a 
+                            href="{{ route('ingredients.index') }}"
+                            @class([
+                                'whitespace-nowrap', 
+                                'bg-base-200 shadow-sm' => request()->routeIs('ingredients.index'),
+                            ])
+                        >
+                            Ingredients
+                        </a>
+                    </li>
                 @endcan
             </ul>
 
