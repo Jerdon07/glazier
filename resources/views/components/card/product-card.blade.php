@@ -39,6 +39,7 @@
             <div class="flex space-x-2">
                 <a 
                     href="/products/{{ $product->id }}"
+                    data-test="show-button"
                     class="btn btn-soft btn-xs
                     {{ $show_button ? 'visible' : 'hidden' }}"
                 >
@@ -47,6 +48,7 @@
 
                 <a 
                     href="/products/{{ $product->id }}/recipes/create"
+                    data-test="create-button"
                     class="btn btn-accent btn-soft btn-xs
                     {{ $add_recipe_button ? 'visible' : 'hidden' }}"
                 >
@@ -54,7 +56,8 @@
                 </a>
 
                 <a 
-                    href="/products/{{ $product->id }}/edit" 
+                    href="/products/{{ $product->id }}/edit"
+                    data-test="edit-button"
                     class="btn btn-info btn-soft btn-xs
                     {{ $edit_button ? 'visible' : 'hidden' }}"
                 >
@@ -64,6 +67,7 @@
                 <button 
                     type="submit" 
                     form="{{ $product->id }}-delete-form"
+                    data-test="delete-button"
                     class="btn btn-error btn-soft btn-xs
                     {{ $delete_button ? 'visible' : 'hidden' }}"
                 >
