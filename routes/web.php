@@ -8,33 +8,36 @@ use App\Http\Controllers\RecipeController;
 use App\Models\Ingredient;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.index')->name('home');
 
-Route::view('/dashboard', 'pages.dashboard', [
-    'users_count' => User::count(),
-    'products_count' => Product::count(),
-    'ingredients_count' => Ingredient::count(),
-    'latest_products' => Product::latest()->take(5)->get(),
-])->middleware('auth');
+Route::get('/dashboard', function (): View {
+    return view('pages.dashboard', [
+        'users_count' => User::count(),
+        'products_count' => Product::count(),
+        'ingredients_count' => Ingredient::count(),
+        'latest_products' => Product::latest()->take(5)->get(),
+    ]);
+})->middleware('auth');
 
 /* Registration Routes */
-Route::middleware('guest')->name('register.')->group(function() {
+Route::middleware('guest')->name('register.')->group(function () {
     Route::get('/register', [RegistrationController::class, 'create'])->name('create');
     Route::post('/register', [RegistrationController::class, 'store'])->name('store');
 });
 
 /* Session Routes */
-Route::middleware('guest')->name('sessions.')->group(function() {
+Route::middleware('guest')->name('sessions.')->group(function () {
     Route::get('/login', [SessionController::class, 'create'])->name('create');
     Route::post('/login', [SessionController::class, 'store'])->name('store');
 });
 Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('sessions.destroy');
 
 /* Ingredient Routes */
-Route::middleware('auth', 'admin')->prefix('ingredients')->name('ingredients.')->group(function() {
+Route::middleware('auth', 'admin')->prefix('ingredients')->name('ingredients.')->group(function () {
     Route::get('/', [IngredientController::class, 'index'])->name('index');
     Route::post('/', [IngredientController::class, 'store'])->name('store');
     Route::get('/create', [IngredientController::class, 'create'])->name('create');
@@ -44,7 +47,7 @@ Route::middleware('auth', 'admin')->prefix('ingredients')->name('ingredients.')-
 });
 
 /* Product Routes */
-Route::middleware('auth')->prefix('products')->name('products.')->group(function() {
+Route::middleware('auth')->prefix('products')->name('products.')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index');
     Route::post('/', [ProductController::class, 'store'])->name('store');
     Route::get('/create', [ProductController::class, 'create'])->name('create');
@@ -53,7 +56,7 @@ Route::middleware('auth')->prefix('products')->name('products.')->group(function
     Route::put('/{product}', [ProductController::class, 'update'])->name('update');
     Route::delete('/{product}', [ProductController::class, 'destroy'])->name('destroy');
 
-    Route::prefix('{product}/recipes')->name('recipes.')->group(function() {
+    Route::prefix('{product}/recipes')->name('recipes.')->group(function () {
         /* Recipe Routes */
         Route::post('/', [RecipeController::class, 'store'])->name('store');
         Route::get('/create', [RecipeController::class, 'create'])->name('create');
@@ -65,7 +68,7 @@ Route::middleware('auth')->prefix('products')->name('products.')->group(function
 
 Route::post('/notifications/read', function (Request $request) {
     $request->validate([
-        'notification_id' => ['required', 'string']
+        'notification_id' => ['required', 'string'],
     ]);
 
     $notification = auth()->user()->notifications()->where('id', $request->input('notification_id'))->first();
