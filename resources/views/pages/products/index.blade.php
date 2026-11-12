@@ -14,7 +14,7 @@
         </div>
 
         {{-- Products --}}
-        @if (isset($products))
+        @if ($products->isNotEmpty())
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4">
                 @foreach ($products as $product)
                     {{-- Card --}}
@@ -27,7 +27,15 @@
                 @endforeach
             </div>
         @else
-            
+        <div class="card bg-base-100 w-full shadow-sm">
+            <div class="card-body mx-auto">
+                <h2 class="card-title mx-auto">
+                    Products is Empty
+                </h2>
+                <x-lucide-ghost class="size-8 mx-auto" />
+                You don't have a product yet...
+            </div>
+        </div>
         @endif
     </div>
 </x-layout>
