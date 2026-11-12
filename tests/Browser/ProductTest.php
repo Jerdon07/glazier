@@ -12,6 +12,13 @@ it('shows all products', function () {
     visit('/products')->assertSee($products->first()->name);
 });
 
+it("shows empty if there's no product", function () {
+    $this->actingAs(User::factory()->create());
+
+    visit('/products')->assertSee('Empty');
+});
+
+/* Create */
 it ('can create a product', function () {
     $this->actingAs($user = User::factory()->create());
 
@@ -26,6 +33,16 @@ it ('can create a product', function () {
         ->assertPathIs('/products');
 });
 
+it ('shows errors when submitting invalid inputs', function () {
+    $this->actingAs(User::factory()->create());
+
+    visit('/products/create')
+        ->fill('name', '1')
+        ->press('Create Product')
+        ->assertPathIs('/products/create')
+        ->assertSee('must be');
+});
+
 it('can show a single product', function () {
     $this->actingAs($user = User::factory()->create());
 
@@ -37,13 +54,12 @@ it('can show a single product', function () {
 });
 
 it('can edit a product', function () {
-
     $this->actingAs($user = User::factory()->create());
 
     $product = Product::factory()->for($user)->create();
 
     visit("/products/{$product->id}")
-        ->press('Edit')
+        ->press('@edit-button')
         ->assertPathIs("/products/{$product->id}/edit")
         ->fill('name', 'Hello!')
         ->press('Update Product')
