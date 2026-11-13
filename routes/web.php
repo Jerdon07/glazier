@@ -67,16 +67,4 @@ Route::middleware('auth')->prefix('products')->name('products.')->group(function
     });
 });
 
-Route::post('/notifications/read', function (Request $request) {
-    $request->validate([
-        'notification_id' => ['required', 'string'],
-    ]);
-
-    $notification = auth()->user()->notifications()->where('id', $request->input('notification_id'))->first();
-
-    $notification->markAsRead();
-
-    return redirect()->back();
-});
-
 Route::patch('/notifications/{notification}/read', [NotificationController::class, 'read'])->name('notifications.update');
