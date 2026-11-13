@@ -32,7 +32,7 @@ class IngredientController extends Controller
     public function store(IngredientRequest $request)
     {
         Gate::authorize('viewAny', Ingredient::class);
-        
+
         $ingredient = Ingredient::create($request->validated());
 
         Auth::user()->notify(new IngredientCreated($ingredient));

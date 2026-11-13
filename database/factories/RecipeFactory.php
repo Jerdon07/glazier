@@ -20,7 +20,7 @@ class RecipeFactory extends Factory
         return [
             'product_id' => Product::inRandomOrder()->value('id'),
             'ingredient_id' => Ingredient::inRandomOrder()->value('id'),
-            'quantity_required' => fake()->numberBetween(1, 20)
+            'quantity_required' => fake()->numberBetween(1, 20),
         ];
     }
 }

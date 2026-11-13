@@ -4,7 +4,7 @@ use App\Models\Product;
 use App\Models\User;
 
 it('shows all products', function () {
-    
+
     $this->actingAs($user = User::factory()->create());
 
     $products = Product::factory()->count(10)->for($user)->create();
@@ -19,7 +19,7 @@ it("shows empty if there's no product", function () {
 });
 
 /* Create */
-it ('can create a product', function () {
+it('can create a product', function () {
     $this->actingAs($user = User::factory()->create());
 
     visit('/products')
@@ -33,7 +33,7 @@ it ('can create a product', function () {
         ->assertPathIs('/products');
 });
 
-it ('shows errors when submitting invalid inputs', function () {
+it('shows errors when submitting invalid inputs', function () {
     $this->actingAs(User::factory()->create());
 
     visit('/products/create')

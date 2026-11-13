@@ -10,7 +10,6 @@ use App\Models\Ingredient;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.index')->name('home');

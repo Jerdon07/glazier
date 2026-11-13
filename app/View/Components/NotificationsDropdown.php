@@ -33,7 +33,7 @@ class NotificationsDropdown extends Component
 
         return view('components.notifications-dropdown', [
             'notifications' => $notifications,
-            'unread_count' => $unread_count
+            'unread_count' => $unread_count,
         ]);
     }
 }

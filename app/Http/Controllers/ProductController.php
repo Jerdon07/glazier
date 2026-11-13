@@ -77,7 +77,7 @@ class ProductController extends Controller
         Gate::authorize('delete', $product);
 
         $product->delete();
-        
+
         return redirect('products');
     }
 }
