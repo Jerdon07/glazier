@@ -2,7 +2,7 @@
     <button tabindex="0" role="button" class="btn btn-ghost">
         <x-lucide-bell class="size-5" />
         @if ($notifications->isNotEmpty())
-            <span class="badge">{{ $notifications->count() }}</span>
+            <span class="badge">{{ $unread_count }}</span>
         @endif
     </button>
 
@@ -13,7 +13,13 @@
                     {{ $notification->data['from'] }}: {{ $notification->data['name'] }}!
                 </p>
                 <div class="flex space-x-2">
-                    <form action="/notifications/{{ $notification->id }}/read" method="post">
+                    <form 
+                        action="/notifications/{{ $notification->id }}/read" 
+                        method="post"
+                        @class([
+                            'hidden' => $notification->read_at
+                        ])
+                    >
                         @csrf
                         @method('PATCH')
 

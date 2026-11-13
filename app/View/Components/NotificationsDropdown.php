@@ -27,8 +27,13 @@ class NotificationsDropdown extends Component
             ->latest()
             ->get();
 
+        $unread_count = Auth::user()
+            ->unreadNotifications()
+            ->count();
+
         return view('components.notifications-dropdown', [
             'notifications' => $notifications,
+            'unread_count' => $unread_count
         ]);
     }
 }
