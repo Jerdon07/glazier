@@ -13,7 +13,7 @@
                     {{ $notification->data['from'] }}: {{ $notification->data['name'] }}!
                 </p>
                 <div class="flex space-x-2">
-                    <form action="/notifications/{{ $notification->id }}/update" method="post">
+                    <form action="/notifications/{{ $notification->id }}/read" method="post">
                         @csrf
                         @method('PATCH')
 
