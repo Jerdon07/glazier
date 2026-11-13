@@ -33,7 +33,7 @@ class ProductCreated extends Notification implements ShouldQueue
         return [
             'from' => 'Product Created',
             'user' => $notifiable->name,
-            'product_name' => $this->product->name,
+            'name' => $this->product->name,
             'price' => $this->product->price,
         ];
     }
