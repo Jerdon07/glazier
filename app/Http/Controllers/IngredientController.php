@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Enums\Enums\IngredientUnitsEnum;
 use App\Http\Requests\IngredientRequest;
 use App\Models\Ingredient;
+use App\Notifications\IngredientCreated;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class IngredientController extends Controller
@@ -31,7 +33,9 @@ class IngredientController extends Controller
     {
         Gate::authorize('viewAny', Ingredient::class);
         
-        Ingredient::create($request->validated());
+        $ingredient = Ingredient::create($request->validated());
+
+        Auth::user()->notify(new IngredientCreated($ingredient));
 
         return redirect()->route('ingredients.index');
     }
