@@ -48,6 +48,7 @@ class ProductCreated extends Notification implements ShouldQueue
     public function toArray(object $notifiable): array
     {
         return [
+            'from' => 'Product Created',
             'user' => $notifiable->name,
             'product_name' => $this->product->name,
             'price' => $this->product->price,

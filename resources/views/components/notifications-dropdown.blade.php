@@ -10,7 +10,7 @@
         @forelse ($notifications as $notification)
             <li>
                 <button type="submit" form="{{ $notification->id }}-form">
-                    Product created: {{ $notification->data['product_name'] }}!
+                    {{ $notification->data['from'] }}: {{ $notification->data['product_name'] }}!
                 </button>
             </li>
 
