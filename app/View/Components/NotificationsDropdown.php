@@ -22,9 +22,9 @@ class NotificationsDropdown extends Component
      */
     public function render(): View|Closure|string
     {
-        $notifications = Auth::user()->unreadNotifications()
+        $notifications = Auth::user()
+            ->unreadNotifications()
             ->latest()
-            ->limit(5)
             ->get();
 
         return view('components.notifications-dropdown', [
