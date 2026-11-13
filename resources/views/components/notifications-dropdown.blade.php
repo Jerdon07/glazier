@@ -14,10 +14,9 @@
                 </button>
             </li>
 
-            <form action="/notifications/read" method="post" id="{{ $notification->id }}-form">
+            <form action="/notifications/{{ $notification->id }}/read" method="post" id="{{ $notification->id }}-form">
                 @csrf
-                
-                <input type="hidden" name="notification_id" value="{{ $notification->id }}">
+                @method('PATCH')
             </form>
         @empty
             <li><span>No unread notifications</span></li>

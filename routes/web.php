@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\Auth\SessionController;
 use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RecipeController;
 use App\Models\Ingredient;
@@ -77,3 +78,5 @@ Route::post('/notifications/read', function (Request $request) {
 
     return redirect()->back();
 });
+
+Route::patch('/notifications/{notification}/read', [NotificationController::class, 'read'])->name('notifications.update');
