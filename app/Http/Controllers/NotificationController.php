@@ -16,5 +16,7 @@ class NotificationController extends Controller
     public function destroy(DatabaseNotification $notification)
     {
         $notification->delete();
+
+        return redirect()->back();
     }
 }

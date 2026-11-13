@@ -68,3 +68,4 @@ Route::middleware('auth')->prefix('products')->name('products.')->group(function
 });
 
 Route::patch('/notifications/{notification}/read', [NotificationController::class, 'read'])->name('notifications.update');
+Route::delete('/notifications/{notification}', [NotificationController::class, 'destroy'])->name('notifications.destroy');
